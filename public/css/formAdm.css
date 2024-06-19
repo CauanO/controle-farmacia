@@ -1,0 +1,12 @@
+body {
+    background-color: #f8f9fa;
+}
+.container {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.form-control, .form-control-file {
+    border-radius: 4px;
+}

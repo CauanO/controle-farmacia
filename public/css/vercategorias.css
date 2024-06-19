@@ -1,0 +1,26 @@
+.table-container {
+    margin-top: 2em;
+}
+.table img {
+    max-width: 100px;
+    height: auto;
+}
+.btn-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 50px;
+    /* height: 30px; */
+}
+.btn-container a, .btn-container form {
+    margin: 0.2em 0;
+    flex: 1 1 auto;
+}
+@media (max-width: 767px) {
+    .table-container {
+        overflow-x: auto;
+    }
+    .btn-container {
+        flex-direction: column;
+    }
+}

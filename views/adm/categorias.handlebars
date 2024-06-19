@@ -1,0 +1,48 @@
+{{#each erros}}
+    <div style="margin: 15px;" class="alert alert-success" role="alert">{{texto}}</div>
+{{else}}
+
+{{/each}}
+<body>
+    <div class="container">
+        <div class="dashboard-heading">
+            <h2>Categorias de Medicamentos</h2>
+            <hr>
+        </div>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Quantidade de Categorias Cadastradas</h5>
+                        <h1 class="">{{totalCategorias}}</h1> 
+                        <a href="/adm/categorias/add" class="btn btn-cadastrar btn-lg">Cadastrar Nova Categoria</a>
+                        <br>
+                        <br>
+                        <a href="/adm/vercategorias" class="btn btn-cadastrar btn-lg">Ver Categorias Cadastradas</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="dashboard-heading">
+            <h2>Medicamentos Cadastrados</h2>
+            <hr>
+        </div>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Quantidade de Medicamentos Cadastrados</h5>
+                        <h1 class="">{{totalCategoriasMed}}</h1> 
+                        <a href="/adm/medicamentos/add" class="btn btn-cadastrar btn-lg">Cadastrar novo Medicamento</a>
+                        <br>
+                        <br>
+                        <a href="/adm/vermedicamentos" class="btn btn-cadastrar btn-lg">Ver Medicamentos Cadastrados</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

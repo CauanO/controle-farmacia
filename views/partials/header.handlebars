@@ -1,0 +1,24 @@
+{{#each erros}}
+<div style="margin: 15px;" class="alert alert-danger" role="alert">{{texto}}</div>
+{{else}}
+
+{{/each}}
+<ul class="menu">
+
+    <li title="home"><a href="#" class="menu-button home">Dashboard</a></li>
+
+    <li title="about"><a href="#" class="active about">about</a></li>
+    {{!-- <li title="search"><a href="#" class="search">search</a></li>
+    <li title="pencil"><a href="#" class="pencil">pencil</a></li>
+    <li title="archive"><a href="#" class="archive">archive</a></li>
+    <li title="contact"><a href="#" class="contact">contact</a></li> --}}
+</ul>
+
+<ul class="menu-bar">
+    <li><a href="/adm/categorias" class="menu-button">Dashboard</a></li>
+    <li><a href="/adm/vercategorias">Categorias</a></li>
+    <li><a href="/adm/vermedicamentos">Medicamentos</a></li>
+    <li><a href="#">Fonecedores</a></li>
+    <li><a href="#">Fabricantes</a></li>
+</ul>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

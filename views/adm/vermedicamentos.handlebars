@@ -1,0 +1,75 @@
+<body>
+    <br>
+    <div class="container table-container">
+        <h1 style="text-align: center;">Medicamentos Cadastrados</h1>
+        <br>
+        {{#if medicamentos.length}}
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Nome Genérico</th>
+                    <th>Código de Barras</th>
+                    <th>Preço de Compra</th>
+                    <th>Preço de Venda</th>
+                    <th>Observações Adicionais</th>
+                    <th>Categoria</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each medicamentos}}
+                <tr>
+                    <td>{{nomeGenerico}}</td>
+                    <td>{{codigoBarras}}</td>
+                    <td>{{precoCompra}}</td>
+                    <td>{{precoVenda}}</td>
+                    <td>{{observacoesAdicionais}}</td>
+                    <td>{{categoria.categoria}}</td>
+                    <td>
+                        <div class="btn-container">
+                            <a href=""><button type="button" class="btn btn-success btn-sm">Acessar</button></a>
+                            <a href="/adm/medicamentos/edit/{{_id}}"><button type="button"
+                                    class="btn btn-warning btn-sm">Editar</button></a>
+
+                            <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog"
+                                aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmação de Exclusão
+                                            </h5>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Fechar">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Tem certeza que deseja deletar este medicamento?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary btn-sm"
+                                                data-dismiss="modal">Cancelar</button>
+                                            <form action="/adm/medicamentos/deletar" method="post"
+                                                style="display:inline;">
+                                                <input type="hidden" name="id" value="{{_id}}">
+                                                <button class="btn btn-danger btn-sm" type="submit">Deletar</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                data-target="#confirmDeleteModal" onclick="setDeleteId('{{_id}}')">Deletar</button>
+                        </div>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        {{else}}
+        <div class="alert alert-warning" role="alert">
+            <h6>Não há medicamentos cadastrados!</h6>
+        </div>
+        {{/if}}
+    </div>
+</body>

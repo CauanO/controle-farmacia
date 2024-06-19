@@ -1,0 +1,33 @@
+body {
+    background-color: #f8f9fa;
+    padding-left: 5em; /* Espaço para o menu fixo */
+
+}
+.container {
+    width: 60%;
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+}
+.dashboard-heading {
+    margin-top: 2em;
+}
+.alert-success {
+    /* width: 80%; */
+    margin: 15px;
+    position: relative;
+    z-index: 20; /* Garantir que a mensagem de erro esteja acima do menu */
+}
+.card {
+    margin-top: 20px;
+}
+.btn-cadastrar {
+    background-color: #267fdd;
+    color: white;
+}
+.btn-cadastrar:hover {
+    background-color: #1d68b6;
+    color: white;
+}

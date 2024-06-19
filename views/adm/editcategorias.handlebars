@@ -1,0 +1,28 @@
+<body>
+    <div class="container mt-5">
+        <div class="header text-center mb-4">
+            <h1>Editar Categoria</h1>
+        </div>
+        <form action="/adm/categorias/edit" method="post">
+        <input type="hidden" name="id" value="{{categoria._id}}">
+            <div class="form-group">
+                <label for="categoria">Categoria do Medicamento:</label>
+                <input type="text" class="form-control" name="categoria" id="categoria" placeholder="Nome da categoria" value="{{categoria.categoria}}">
+            </div>
+            <div class="form-group">
+                <label for="descricao">Descrição:</label>
+                <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição" value="{{categoria.descricao}}">
+            </div>
+            <div class="form-group">
+                <label for="observacoesAdicionais">Observações Adicionais:</label>
+                <input type="text" class="form-control" name="observacoesAdicionais" id="observacoesAdicionais" placeholder="Observações Adicionais" value="{{categoria.observacoesAdicionais}}">
+            </div>
+            <div class="form-group">
+                <label for="img">Imagem Representativa:</label>
+                <br>
+                <input type="file" class="form-control-file" name="img" id="img">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Editar</button>
+        </form>
+    </div>
+</body>

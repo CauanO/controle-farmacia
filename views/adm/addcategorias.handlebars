@@ -1,0 +1,32 @@
+{{#each erros}}
+    <div style="margin: 15px;" class="alert alert-danger" role="alert">{{texto}}</div>
+{{else}}
+
+{{/each}}
+<body>
+    <div class="container mt-5">
+        <div class="header text-center mb-4">
+            <h1>Nova Categoria</h1>
+        </div>
+        <form action="/adm/categorias/nova" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="categoria">Categoria do Medicamento:</label>
+                <input type="text" class="form-control" name="categoria" id="categoria" placeholder="Nome da categoria">
+            </div>
+            <div class="form-group">
+                <label for="descricao">Descrição:</label>
+                <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição">
+            </div>
+            <div class="form-group">
+                <label for="observacoesAdicionais">Observações Adicionais:</label>
+                <input type="text" class="form-control" name="observacoesAdicionais" id="observacoesAdicionais" placeholder="Observações Adicionais">
+            </div>
+            <div class="form-group">
+                <label for="img">Imagem Representativa:</label>
+                <br>
+                <input type="file" class="form-control-file" name="img" id="img">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+        </form>
+    </div>
+</body>
