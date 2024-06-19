@@ -1,15 +1,15 @@
 // Chamada do Router
 const router = require('express').Router()
 // Chamada do banco de dados
-const mongoose = require("mongoose")
+const mongoose = require ("mongoose")
 // Require da Model de Categoria
-require("../models/Categoria")
+require ("../models/Categoria")
 // Chamando o exports do model
-const Categoria = mongoose.model("categorias")
+const Categoria = mongoose.model ("categorias")
 // Chamada do Multer
-const multer = require('multer');
+const multer = require ('multer');
 // Chamada da Pasta Uploads
-const upload = multer({ dest: 'public/img/' })
+const upload = multer ({ dest: 'public/img/' })
 // Require da Model de Medicamento
 require("../models/Medicamento")
 // CHAMADA DO BANCO POSTAGEM 2.0
