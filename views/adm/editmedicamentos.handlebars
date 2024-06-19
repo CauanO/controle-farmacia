@@ -1,5 +1,10 @@
+    {{>header}}
 {{#each erros}}
-<div style="margin: 15px;" class="alert alert-danger">{{texto}}</div>
+<div style="margin: 15px;" class="alert alert-danger">{{texto}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
 {{else}}
 {{/each}}
 
@@ -8,47 +13,48 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="form-container">
-                    <h2 class="form-title text-center">Cadastro de Medicamentos</h2>
+                    <h1 class="form-title text-center">Editar Medicamento</h1>
                     <form action="/adm/medicamentos/edit" method="POST">
-                    <input type="hidden" name="id" value="{{medicamentos._id}}">
+                        <input type="hidden" name="id" value="{{medicamentos._id}}">
                         <div class="form-group">
                             <label for="nomeGenerico">Nome Genérico</label>
                             <input type="text" class="form-control" name="nomeGenerico"
-                                placeholder="Digite o nome genérico" value="{{medicamentos.nomeGenerico}}" >
+                                placeholder="Digite o nome genérico" value="{{medicamentos.nomeGenerico}}">
                         </div>
                         <div class="form-group">
                             <label for="codigoBarras">Código de Barras</label>
-                            <input type="text" class="form-control" name="codigoBarras" 
-                                placeholder="Digite o código de barras" value="{{medicamentos.codigoBarras}}" >
+                            <input type="text" class="form-control" name="codigoBarras"
+                                placeholder="Digite o código de barras" value="{{medicamentos.codigoBarras}}">
                         </div>
                         {{!-- <div class="form-group">
                             <label for="fabricante">Fabricante</label>
-                            <select class="form-control" name="fabricante" >
+                            <select class="form-control" name="fabricante">
                                 <option value="">Selecione o fabricante</option>
                                 <!-- Opções de fabricantes -->
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="fornecedor">Fornecedor</label>
-                            <select class="form-control" name="fornecedor" >
+                            <select class="form-control" name="fornecedor">
                                 <option value="">Selecione o fornecedor</option>
                                 <!-- Opções de fornecedores -->
                             </select>
                         </div> --}}
                         <div class="form-group">
                             <label for="precoCompra">Preço de Compra</label>
-                            <input type="number" class="form-control" name="precoCompra" 
+                            <input type="number" class="form-control" name="precoCompra"
                                 placeholder="Digite o preço de compra" value="{{medicamentos.precoCompra}}">
                         </div>
                         <div class="form-group">
                             <label for="precoVenda">Preço de Venda</label>
-                            <input type="number" class="form-control" name="precoVenda" 
+                            <input type="number" class="form-control" name="precoVenda"
                                 placeholder="Digite o preço de venda" value="{{medicamentos.precoVenda}}">
                         </div>
                         <div class="form-group">
                             <label for="observacoesAdicionais">Observações Adicionais</label>
-                            <textarea class="form-control" name="observacoesAdicionais" i
-                                rows="3" placeholder="Digite as observações adicionais" value="{{medicamentos.observacoesAdicionais}}" ></textarea>
+                            <textarea class="form-control" name="observacoesAdicionais" i rows="3"
+                                placeholder="Digite as observações adicionais"
+                                value="{{medicamentos.observacoesAdicionais}}"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="categoria">Categoria</label>

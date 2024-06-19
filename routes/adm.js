@@ -99,10 +99,10 @@ router.post("/categorias/edit", function(req, res) {
 
         categoria.save().then(() =>{
             req.flash("success_msg", "Categoria editada com sucesso!")
-            res.redirect("/adm/categorias")
+            res.redirect("/adm/vercategorias")
         }).catch((err) => {
             req.flash("error_msg", "Houve um erro ao salvar a edição!")
-            res.redirect("/adm/categorias")
+            res.redirect("/adm/vercategorias")
         })
     }).catch((err) => {
         req.flash("error_msg", "Houve um erro ao editar a categoria!")
@@ -130,7 +130,7 @@ router.get("/vermedicamentos", function (req, res) {
         res.render("adm/vermedicamentos", { medicamentos: medicamentos })
     }).catch((err) => {
         req.flash("error_msg", "Houve um erro ao mostrar os medicamentos!")
-        res.redirect("/adm/categorias")
+        res.redirect("/adm/addmedicamentos")
     })
 })
 
@@ -140,11 +140,11 @@ router.get("/medicamentos/add", function(req, res) {
         res.render("adm/addmedicamentos", {categorias: categorias})
     }).catch((err) => {
         req.flash("error_msg", "Houve um erro ao carregar o form!")
-        res.redirect("/adm/categorias")
+        res.redirect("/adm/addmedicamentos")
     })
 })
 
-// ROTA POST DE POSTAGENS
+// ROTA POST DE MEDICAMENTOS
 router.post("/medicamentos/nova", function (req, res) {
     var erros = []
 
@@ -202,15 +202,15 @@ router.post("/medicamentos/edit", function (req, res) {
 
             medicamentos.save().then(() => {
                 req.flash("success_msg", "Medicamento editado com sucesso!")
-                res.redirect("/adm/categorias")
+                res.redirect("/adm/vermedicamentos")
             }).catch((err) => {
                 req.flash("error_msg", "error interno!")
-                res.redirect("/adm/categorias")
+                res.redirect("/adm/vermedicamentos")
             })
     }).catch((err) => {
         req.flash("error_msg", "Houve um erro ao editar a postagem!")
         console.log(err)
-        res.redirect("/adm/categorias")
+        res.redirect("/adm/vermedicamentos")
     })
 })
 
@@ -218,11 +218,17 @@ router.post("/medicamentos/edit", function (req, res) {
 router.post("/medicamentos/deletar", function (req, res) {
     Medicamento.deleteOne({ _id: req.body.id }).then(() => {
         req.flash("success_msg", "Medicamento deletado com sucesso!")
-        res.redirect("/adm/categorias")
+        res.redirect("/adm/vermedicamentos")
     }).catch((err) => {
         req.flash("error_msg", "Houve um erro ao deletar o medicamento!")
-        res.redirect("/adm/categorias")
+        res.redirect("/adm/vermedicamentos")
     })
 })
+
+// Rota de perfil
+router.get("/perfil", function(req, res) {
+    res.render("adm/perfil")
+})
+
 
 module.exports = router

@@ -1,8 +1,14 @@
+    {{>header}}
 {{#each erros}}
-    <div style="margin: 15px;" class="alert alert-success" role="alert">{{texto}}</div>
+<div style="margin: 15px;" class="alert alert-success" role="alert">{{texto}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
 {{else}}
 
 {{/each}}
+
 <body>
     <div class="container">
         <div class="dashboard-heading">
@@ -14,7 +20,7 @@
                 <div class="card text-center">
                     <div class="card-body">
                         <h5 class="card-title">Quantidade de Categorias Cadastradas</h5>
-                        <h1 class="">{{totalCategorias}}</h1> 
+                        <h1 class="">{{totalCategorias}}</h1>
                         <a href="/adm/categorias/add" class="btn btn-cadastrar btn-lg">Cadastrar Nova Categoria</a>
                         <br>
                         <br>
@@ -35,7 +41,7 @@
                 <div class="card text-center">
                     <div class="card-body">
                         <h5 class="card-title">Quantidade de Medicamentos Cadastrados</h5>
-                        <h1 class="">{{totalCategoriasMed}}</h1> 
+                        <h1 class="">{{totalCategoriasMed}}</h1>
                         <a href="/adm/medicamentos/add" class="btn btn-cadastrar btn-lg">Cadastrar novo Medicamento</a>
                         <br>
                         <br>

@@ -53,6 +53,11 @@ app.use(express.static('./public'));
 const adm = require('./routes/adm')
 app.use('/adm', adm) // Usando o arquivo adm.js 
 
+// Rota principal de login
+app.get("/", function(req, res) {
+    res.render('index')
+})
+
 
 // Servidor
 app.listen(8081,function(req, res) {
