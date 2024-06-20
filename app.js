@@ -12,6 +12,11 @@ const flash = require("connect-flash")
 // Chamada do Banco de Dados
 const mongoose = require("mongoose")
 
+// ROTA INDEX
+app.get("/", function(req, res) {
+    res.render('index')
+})
+
 // Config handlebars
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
@@ -52,12 +57,6 @@ app.use(express.static('./public'));
 // Chamada do Routes de ADM
 const adm = require('./routes/adm')
 app.use('/adm', adm) // Usando o arquivo adm.js 
-
-// Rota principal de login
-app.get("/", function(req, res) {
-    res.render('index')
-})
-
 
 // Servidor
 app.listen(8081,function(req, res) {
