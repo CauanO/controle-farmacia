@@ -1,0 +1,40 @@
+    {{>header}}
+{{#each erros}}
+<div style="margin: 15px;" class="alert alert-danger">{{texto}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{{else}}
+{{/each}}
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="form-container">
+                    <h2 class="form-title text-center">Editar Fabricante</h2>
+                    <form action="/adm/fabricantes/edit" method="POST">
+                        <input type="hidden" name="id" value="{{fabricante._id}}">
+                        <div class="form-group">
+                            <label for="text">Nome do Fabricante</label>
+                            <input type="text" class="form-control" name="nomeFabricante"
+                                placeholder="Digite o nome" value="{{fabricante.nomeFabricante}}" >
+                        </div>
+                        <div class="form-group">
+                            <label for="number">Telefone</label>
+                            <input type="text" class="form-control" name="telefoneFabricante"
+                                placeholder="(99) 9 9988-8899" value="{{fabricante.telefoneFabricante}}" >
+                        </div>
+                        <div class="form-group">
+                            <label for="text">Email</label>
+                            <input type="text" class="form-control" name="emailFabricante"
+                                placeholder="Digite seu email" value="{{fabricante.emailFabricante}}">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Editar Fabricante</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

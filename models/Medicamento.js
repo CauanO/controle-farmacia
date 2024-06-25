@@ -10,14 +10,14 @@ const Medicamento = new Schema({
     codigoBarras: {
         type: String,
     },
-    // fabricante: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: "fabricante",
-    // },
-    // fornecedor: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: "fornecedor",
-    // },
+    fabricante: {
+        type: Schema.Types.ObjectId,
+        ref: "fabricantes",
+    },
+    fornecedor: {
+        type: Schema.Types.ObjectId,
+        ref: "fornecedores",
+    },
     precoCompra: {
         type: Number,
         required: true

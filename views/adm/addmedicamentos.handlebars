@@ -1,12 +1,4 @@
-    {{>header}}
-{{#each erros}}
-<div style="margin: 15px;" class="alert alert-danger">{{texto}}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-{{else}}
-{{/each}}
+{{>header}}
 
 <body>
     <div class="container">
@@ -25,20 +17,26 @@
                             <input type="text" class="form-control" name="codigoBarras"
                                 placeholder="Digite o código de barras">
                         </div>
-                        {{!-- <div class="form-group">
+                        <div class="form-group">
                             <label for="fabricante">Fabricante</label>
                             <select class="form-control" name="fabricante">
-                                <option value="">Selecione o fabricante</option>
-                                <!-- Opções de fabricantes -->
+                                {{#each fabricantes}}
+                                <option value="{{_id}}">{{nomeFabricante}}</option>
+                                {{else}}
+                                <option value="0">Nenhum fabricante registrado</option>
+                                {{/each}}
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="fornecedor">Fornecedor</label>
                             <select class="form-control" name="fornecedor">
-                                <option value="">Selecione o fornecedor</option>
-                                <!-- Opções de fornecedores -->
+                                {{#each fornecedores}}
+                                <option value="{{_id}}">{{nomeFornecedor}}</option>
+                                {{else}}
+                                <option value="0">Nenhum fabricante registrado</option>
+                                {{/each}}
                             </select>
-                        </div> --}}
+                        </div>
                         <div class="form-group">
                             <label for="precoCompra">Preço de Compra</label>
                             <input type="number" class="form-control" name="precoCompra"
