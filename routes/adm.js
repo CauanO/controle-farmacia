@@ -42,7 +42,8 @@ router.get('/categorias', async (req, res) => {
         const totalCategorias = await Categoria.countDocuments();
         const totalCategoriasMed = await Medicamento.countDocuments();
         const totalCategoriasFab = await Fabricante.countDocuments();
-        res.render('adm/categorias', { totalCategoriasMed, totalCategorias, totalCategoriasFab, erros: req.flash('error_msg') });
+        const totalCategoriasFor = await Fornecedor.countDocuments();
+        res.render('adm/categorias', { totalCategoriasMed, totalCategorias, totalCategoriasFab, totalCategoriasFor, erros: req.flash('error_msg') });
     } catch (err) {
         console.error('Erro ao carregar o dashboard:', err);
         req.flash('error_msg', 'Houve um erro ao carregar o dashboard.');
@@ -425,21 +426,16 @@ router.post("/fornecedor/edit", function (req, res) {
     })
 })
 
-// // ROTA PARA DELETAR OS FABRICANTES
-// router.post("/fabricantes/deletar", function (req, res) {
-//     Fabricante.deleteOne({ _id: req.body.id }).then(() => {
-//         req.flash("success_msg", "Fabricante deletado com sucesso!")
-//         res.redirect("/adm/verfabricante")
-//     }).catch((err) => {
-//         req.flash("error_msg", "Houve um erro ao deletar o fabricante!")
-//         res.redirect("/adm/verfabricante")
-//     })
-// })
-
-
-
-
-
+// ROTA PARA DELETAR OS FORNECEDORES
+router.post("/fornecedor/deletar", function (req, res) {
+    Fornecedor.deleteOne({ _id: req.body.id }).then(() => {
+        req.flash("success_msg", "Fornecedor deletado com sucesso!")
+        res.redirect("/adm/verfornecedor")
+    }).catch((err) => {
+        req.flash("error_msg", "Houve um erro ao deletar o fornecedor!")
+        res.redirect("/adm/verfornecedor")
+    })
+})
 
 
 
@@ -449,6 +445,11 @@ router.post("/fornecedor/edit", function (req, res) {
 // Rota de perfil
 router.get("/perfil", function (req, res) {
     res.render("adm/perfil")
+})
+
+// Rota de login
+router.get("/login", function (req, res) {
+    res.render("adm/login")
 })
 
 

@@ -1,18 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmácia Pague Mais</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+        .product-image {
+            height: 300px; /* Altura padrão para as imagens dos produtos */
+        }
+    </style>
+</head>
 <body>
-    <div class="login-container">
-        <div class="login-card">
-            <h3 class="text-center">Login</h3>
-            <form action="/login" method="POST">
-                <div class="form-group">
-                    <label for="username">Usuário</label>
-                    <input type="text" class="form-control" id="username" name="username" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Senha</label>
-                    <input type="password" class="form-control" id="password" name="password" required>
-                </div>
-                <button type="submit" class="btn btn-primary btn-block">Entrar</button>
-            </form>
+
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Farmácia Pague Mais</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#banner">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#medicamentos">Medicamentos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-outline-success my-2 my-sm-0" href="/adm/login">Login</a>
+                </li>
+            </ul>
         </div>
-    </div>
+    </nav>
+    <!-- Fim - Header -->
+
+    <!-- Banner -->
+    <section id="banner" class="py-5" style="background-color: rgb(226, 237, 241);">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <img class="img-fluid rounded mb-4 mb-md-0 product-image"
+                        src="https://images.emojiterra.com/google/android-11/512px/2695.png"
+                        alt="Banner Farmácia Pague Mais">
+                </div>
+                <div class="col-md-6">
+                    <div class="small mb-1">FARMÁCIA - PAGUE MAIS</div>
+                    <h1 class="display-5 fw-bolder">Bem-vindos à Farmácia Pague Mais!</h1>
+                    <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem
+                        quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis
+                        delectus ipsam minima ea iste laborum vero?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Fim - Banner -->
+
+    <!-- Medicamentos -->
+    <section id="medicamentos" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="fw-bolder mb-4 text-center">Medicamentos</h2>
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="card h-100">
+                        <img class="card-img-top product-image"
+                            src="https://d1xdssnpeez8k0.cloudfront.net/Custom/Content/Products/19/97/19972_amoxicilina-capsula-ems-500mg-caixa-com-15-capsulas-gelatinosas-duras-p7896004700441_l1_637217825884250651.jpg"
+                            alt="Amoxicilina">
+                        <div class="card-body">
+                            <h5 class="card-title">Amoxicilina</h5>
+                            <p class="card-text">R$ 800,00</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" class="btn btn-outline-dark btn-block">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="card h-100">
+                        <img class="card-img-top product-image"
+                            src="https://drogafuji.vtexassets.com/arquivos/ids/177186/7896181913214_1.jpg?v=637329171434970000"
+                            alt="Paracetamol">
+                        <div class="card-body">
+                            <h5 class="card-title">Paracetamol</h5>
+                            <p class="card-text">R$ 560,00</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" class="btn btn-outline-dark btn-block">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="card h-100">
+                        <img class="card-img-top product-image"
+                            src="https://cdn1.staticpanvel.com.br/produtos/15/102215-15.jpg"
+                            alt="Ibuprofeno">
+                        <div class="card-body">
+                            <h5 class="card-title">Ibuprofeno</h5>
+                            <p class="card-text"><span class="text-muted">R$ 50,00</span> R$ 25,00</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" class="btn btn-outline-dark btn-block">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="card h-100">
+                        <img class="card-img-top product-image"
+                            src="https://santaluciadrogaria.vtexassets.com/arquivos/ids/159851-800-1067?v=637638047999330000&width=800&height=1067&aspect=true"
+                            alt="Omeprazol">
+                        <div class="card-body">
+                            <h5 class="card-title">Omeprazol</h5>
+                            <p class="card-text">R$ 40,00</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" class="btn btn-outline-dark btn-block">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Fim - Medicamentos -->
+
+    <!-- Footer -->
+    <footer class="py-4 bg-dark text-center text-white">
+        <p class="m-0">Farmácia Pague Mais &copy; Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Bootstrap JavaScript e outros scripts necessários -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 </body>
+</html>
