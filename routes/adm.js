@@ -21,23 +21,23 @@ const Medicamento = mongoose.model("medicamentos")
 require("../models/Fabricante")
 // Chamando o exports do model
 const Fabricante = mongoose.model("fabricantes")
-
 // Require da Model de Fornecedor
 require("../models/Fornecedor")
 // CHAMADA DO BANCO POSTAGEM 2.0
 const Fornecedor = mongoose.model("fornecedores")
+const {eAdm} = require("../helpers/eAdm")
 
 // ROTAS
 
 // ROTA CHEFE - ADM 
-router.get('/', function (req, res) {
+router.get('/', eAdm, function (req, res) {
     res.send("Rota Principal ")
 })
 
 // CATEGORIAS
 
 // ROTA "CATEGORIAS" = DASHTBOAD 
-router.get('/categorias', async (req, res) => {
+router.get('/categorias', eAdm, async (req, res) => {
     try {
         const totalCategorias = await Categoria.countDocuments();
         const totalCategoriasMed = await Medicamento.countDocuments();
@@ -52,12 +52,12 @@ router.get('/categorias', async (req, res) => {
 });
 
 // ROTA GET DE CADASTRO DAS CATEGORIAS
-router.get('/categorias/add', function (req, res) {
+router.get('/categorias/add', eAdm, function (req, res) {
     res.render('adm/addcategorias')
 })
 
 // ROTA POST DE CADASTRO DAS CATEGORIAS
-router.post('/categorias/nova', upload.single('img'), function (req, res) {
+router.post('/categorias/nova', upload.single('img'), eAdm, function (req, res) {
 
     var erros = [];
 
@@ -90,7 +90,7 @@ router.post('/categorias/nova', upload.single('img'), function (req, res) {
 })
 
 // ROTA DE VISUALISAÇÃO DAS CATEGORIAS CADASTRADAS
-router.get('/vercategorias', function (req, res) {
+router.get('/vercategorias' , eAdm, function (req, res) {
     Categoria.find().sort({ date: 'desc' }).lean().then((categorias) => {
         res.render("adm/vercategorias", { categorias: categorias })
     }).catch((err) => {
@@ -100,7 +100,7 @@ router.get('/vercategorias', function (req, res) {
 })
 
 // ROTA GET DE EDIÇÃO DE CATEGORIAS
-router.get("/categorias/edit/:id", function (req, res) {
+router.get("/categorias/edit/:id", eAdm, function (req, res) {
     Categoria.findOne({ _id: req.params.id }).lean().then(function (categoria) {
         res.render("adm/editcategorias", { categoria: categoria })
     }).catch((err) => {
@@ -110,7 +110,7 @@ router.get("/categorias/edit/:id", function (req, res) {
 })
 
 // ROTA POST DE EDIÇÃO DAS CATEGORIAS
-router.post("/categorias/edit", function (req, res) {
+router.post("/categorias/edit", eAdm, function (req, res) {
     Categoria.findOne({ _id: req.body.id }).then((categoria) => {
         categoria.categoria = req.body.categoria
         categoria.descricao = req.body.descricao
@@ -130,7 +130,7 @@ router.post("/categorias/edit", function (req, res) {
 })
 
 // ROTA PARA DELETAR AS CATEGORIAS
-router.post("/categorias/deletar", function (req, res) {
+router.post("/categorias/deletar", eAdm, function (req, res) {
     Categoria.deleteOne({ _id: req.body.id }).then(() => {
         req.flash("success_msg", "Categoria deletada com sucesso!")
         res.redirect("/adm/vercategorias")
@@ -144,7 +144,7 @@ router.post("/categorias/deletar", function (req, res) {
 // MEDICAMENTOS
 
 // ROTA GET DE MEDICAMENTOS
-router.get("/vermedicamentos", function (req, res) {
+router.get("/vermedicamentos", eAdm, function (req, res) {
     Medicamento.find().populate("categoria").populate("fabricante").populate("fornecedor").sort({ data: "desc" }).lean().then((medicamentos) => {
         res.render("adm/vermedicamentos", { medicamentos: medicamentos })
     }).catch((err) => {
@@ -154,7 +154,7 @@ router.get("/vermedicamentos", function (req, res) {
 })
 
 // ROTA GET DE MEDICAMENTO = ADD
-router.get("/medicamentos/add", function (req, res) {
+router.get("/medicamentos/add", eAdm, function (req, res) {
     Categoria.find().lean().then((categorias) => {
         Fabricante.find().lean().then((fabricantes) => {
             Fornecedor.find().lean().then((fornecedores) => {
@@ -176,7 +176,7 @@ router.get("/medicamentos/add", function (req, res) {
 
 
 // ROTA POST DE MEDICAMENTOS
-router.post("/medicamentos/nova", function (req, res) {
+router.post("/medicamentos/nova", eAdm, function (req, res) {
     var erros = []
 
     if (req.body.nomeGenerico == "0") {
@@ -207,7 +207,7 @@ router.post("/medicamentos/nova", function (req, res) {
 })
 
 // ROTA DE EDIÇÃO DE MEDICAMENTOS
-router.get("/medicamentos/edit/:id", function (req, res) {
+router.get("/medicamentos/edit/:id", eAdm, function (req, res) {
     Medicamento.findOne({ _id: req.params.id }).lean().then((medicamentos) => {
         Categoria.find().lean().then((categorias) => {
             res.render("adm/editmedicamentos", { categorias: categorias, medicamentos: medicamentos })
@@ -222,7 +222,7 @@ router.get("/medicamentos/edit/:id", function (req, res) {
 })
 
 // ROTA POST DE EDIÇÃO DE POSTS
-router.post("/medicamentos/edit", function (req, res) {
+router.post("/medicamentos/edit", eAdm, function (req, res) {
     Medicamento.findOne({ _id: req.body.id }).then((medicamentos) => {
         medicamentos.nomeGenerico = req.body.nomeGenerico,
             medicamentos.codigoBarras = req.body.codigoBarras,
@@ -246,7 +246,7 @@ router.post("/medicamentos/edit", function (req, res) {
 })
 
 // ROTA PARA DELETAR OS MEDICAMENTOS
-router.post("/medicamentos/deletar", function (req, res) {
+router.post("/medicamentos/deletar", eAdm, function (req, res) {
     Medicamento.deleteOne({ _id: req.body.id }).then(() => {
         req.flash("success_msg", "Medicamento deletado com sucesso!")
         res.redirect("/adm/vermedicamentos")
@@ -259,7 +259,7 @@ router.post("/medicamentos/deletar", function (req, res) {
 // FABRICANTE
 
 // ROTA GET DE FABRICANTE
-router.get("/verfabricante", (req, res) => {
+router.get("/verfabricante", eAdm, (req, res) => {
     Fabricante.find().sort({ data: "desc" }).lean().then((fabricantes) => {
         res.render("adm/verfabricante", { fabricantes: fabricantes });
     }).catch((err) => {
@@ -269,7 +269,7 @@ router.get("/verfabricante", (req, res) => {
 });
 
 // ROTA GET DE FABRICANTE = ADD
-router.get("/fabricante/add", (req, res) => {
+router.get("/fabricante/add", eAdm, (req, res) => {
     Categoria.find().lean().then(() => {
         res.render("adm/addfabricante");
     }).catch((err) => {
@@ -279,7 +279,7 @@ router.get("/fabricante/add", (req, res) => {
 });
 
 // ROTA POST PARA ADICIONAR OS FABRICANTES
-router.post("/fabricante/nova", (req, res) => {
+router.post("/fabricante/nova", eAdm, (req, res) => {
     var erros = [];
 
     if (!req.body.nomeFabricante) {
@@ -304,7 +304,7 @@ router.post("/fabricante/nova", (req, res) => {
     }
 });
 
-router.get("/fabricantes/edit/:id", function (req, res) {
+router.get("/fabricantes/edit/:id", eAdm, function (req, res) {
     Fabricante.findOne({ _id: req.params.id }).lean().then(function (fabricante) {
         res.render("adm/editfabricante", { fabricante: fabricante })
     }).catch((err) => {
@@ -314,7 +314,7 @@ router.get("/fabricantes/edit/:id", function (req, res) {
 })
 
 // ROTA POST DE EDIÇÃO DE FABRICANTES
-router.post("/fabricantes/edit", function (req, res) {
+router.post("/fabricantes/edit", eAdm, function (req, res) {
     Fabricante.findOne({ _id: req.body.id }).then((fabricante) => {
             fabricante.nomeFabricante = req.body.nomeFabricante,
             fabricante.telefoneFabricante = req.body.telefoneFabricante,
@@ -334,7 +334,7 @@ router.post("/fabricantes/edit", function (req, res) {
 })
 
 // ROTA PARA DELETAR OS FABRICANTES
-router.post("/fabricantes/deletar", function (req, res) {
+router.post("/fabricantes/deletar", eAdm, function (req, res) {
     Fabricante.deleteOne({ _id: req.body.id }).then(() => {
         req.flash("success_msg", "Fabricante deletado com sucesso!")
         res.redirect("/adm/verfabricante")
@@ -351,7 +351,7 @@ router.post("/fabricantes/deletar", function (req, res) {
 // FORNECEDOR
 
 // ROTA GET DE FORNECEDOR
-router.get("/verfornecedor", (req, res) => {
+router.get("/verfornecedor", eAdm, (req, res) => {
     Fornecedor.find().sort({ data: "desc" }).lean().then((fornecedores) => {
         res.render("adm/verfornecedor", { fornecedores: fornecedores });
     }).catch((err) => {
@@ -361,7 +361,7 @@ router.get("/verfornecedor", (req, res) => {
 });
 
 // ROTA GET DE FORNECEDOR = ADD
-router.get("/fornecedor/add", (req, res) => {
+router.get("/fornecedor/add", eAdm, (req, res) => {
     Categoria.find().lean().then(() => {
         res.render("adm/addfornecedor");
     }).catch((err) => {
@@ -371,7 +371,7 @@ router.get("/fornecedor/add", (req, res) => {
 });
 
 // ROTA POST PARA ADICIONAR OS FORNECEDOR
-router.post("/fornecedor/nova", (req, res) => {
+router.post("/fornecedor/nova", eAdm, (req, res) => {
     var erros = [];
 
     if (!req.body.nomeFornecedor) {
@@ -397,7 +397,7 @@ router.post("/fornecedor/nova", (req, res) => {
 });
 
 // ROTA GET DE EDIÇÃO DE FORNECEDORES
-router.get("/fornecedor/edit/:id", function (req, res) {
+router.get("/fornecedor/edit/:id", eAdm, function (req, res) {
     Fornecedor.findOne({ _id: req.params.id }).lean().then(function (fornecedores) {
         res.render("adm/editfornecedor", { fornecedores: fornecedores })
     }).catch((err) => {
@@ -407,7 +407,7 @@ router.get("/fornecedor/edit/:id", function (req, res) {
 })
 
 // ROTA POST DE EDIÇÃO DE FORNECEDORES
-router.post("/fornecedor/edit", function (req, res) {
+router.post("/fornecedor/edit", eAdm, function (req, res) {
     Fornecedor.findOne({ _id: req.body.id }).then((fornecedores) => {
         fornecedores.nomeFornecedor = req.body.nomeFornecedor,
         fornecedores.telefoneFornecedor = req.body.telefoneFornecedor,
@@ -427,7 +427,7 @@ router.post("/fornecedor/edit", function (req, res) {
 })
 
 // ROTA PARA DELETAR OS FORNECEDORES
-router.post("/fornecedor/deletar", function (req, res) {
+router.post("/fornecedor/deletar", eAdm, function (req, res) {
     Fornecedor.deleteOne({ _id: req.body.id }).then(() => {
         req.flash("success_msg", "Fornecedor deletado com sucesso!")
         res.redirect("/adm/verfornecedor")
@@ -439,11 +439,10 @@ router.post("/fornecedor/deletar", function (req, res) {
 
 
 
-
 // PERFIL
 
 // Rota de perfil
-router.get("/perfil", function (req, res) {
+router.get("/perfil", eAdm, function (req, res) {
     res.render("adm/perfil")
 })
 

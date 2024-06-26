@@ -11,6 +11,8 @@ const session = require("express-session")
 const flash = require("connect-flash")
 // Chamada do Banco de Dados
 const mongoose = require("mongoose")
+const passport = require("passport")
+require("./config/auth")(passport)
 
 // ROTA INDEX
 app.get("/", function(req, res) {
@@ -33,6 +35,9 @@ app.use(session({
     saveUninitialized: true
 }))
 
+app.use(passport.initialize())
+app.use(passport.session())
+
 // Config do Flash
 app.use(flash())
 
@@ -48,6 +53,8 @@ mongoose.connect("mongodb://localhost/controleFarmacia").then(function() {
 app.use(function(req, res, next) {
     res.locals.success_msg = req.flash("success_msg") //ESSE LOCALS É PARA A CRIAÇÃO DE UMA VAR GLOBAL
     res.locals.error_msg = req.flash("error_msg")
+    res.locals.error = req.flash("error")
+    res.locals.user = req.user || null // dados do users
     next()
 })
 

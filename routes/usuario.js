@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 require("../models/Usuario");
 const Usuario = mongoose.model("usuarios");
 const bcrypt = require("bcryptjs");
+const passport = require("passport")
 
 // Rota de cadastro
 router.get("/cadastro", function (req, res) {
@@ -38,8 +39,9 @@ router.post("/cadastro/nova", function (req, res) {
             } else {
                 const novoUsuario = new Usuario({
                     nome: req.body.nome,
-                    email: req.body.email,
-                    senha: req.body.senha
+                    email: req.body.email, 
+                    senha: req.body.senha,
+                    // eAdm: 1
                 });
                 bcrypt.genSalt(10, (erro, salt) => {
                     bcrypt.hash(novoUsuario.senha, salt, (erro, hash) => {
@@ -67,8 +69,16 @@ router.post("/cadastro/nova", function (req, res) {
 })
 
 // Rota de login
-router.get("/login", function (req, res) {
+router.get("/login",function (req, res) {
     res.render("usuarios/login")
+})
+
+router.post("/login", function(req, res, next) {
+    passport.authenticate("local", {
+        successRedirect: "/",
+        failureRedirect: "/usuarios/login",
+        failureFlash: true
+    })(req, res, next)
 })
 
 module.exports = router;
