@@ -58,6 +58,10 @@ app.use(express.static('./public'));
 const adm = require('./routes/adm')
 app.use('/adm', adm) // Usando o arquivo adm.js 
 
+// Chamada do Routes de USUARIOS
+const usuarios = require('./routes/usuario')
+app.use('/usuarios', usuarios) // Usando o arquivo usuarios.js 
+
 // Servidor
 app.listen(8081,function(req, res) {
     console.log("Servidor OK")

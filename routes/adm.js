@@ -447,10 +447,6 @@ router.get("/perfil", function (req, res) {
     res.render("adm/perfil")
 })
 
-// Rota de login
-router.get("/login", function (req, res) {
-    res.render("adm/login")
-})
 
 
 module.exports = router

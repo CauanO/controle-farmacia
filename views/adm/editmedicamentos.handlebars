@@ -28,16 +28,24 @@
                         </div>
                         <div class="form-group">
                             <label for="fabricante">Fabricante</label>
-                            <select class="form-control" name="fabricante">
+                            <select class="form-control" name="nomeFabricante">
                                 <option value="">Selecione o fabricante</option>
-                                <!-- FALTA TERMINAR -->
+                                {{#each fabricante}}
+                                <option value="{{_id}}">{{nomeFabricante}}</option>
+                                {{else}}
+                                <option value="0">Nenhuma categoria registrada</option>
+                                {{/each}}
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="fornecedor">Fornecedor</label>
-                            <select class="form-control" name="fornecedor">
+                            <select class="form-control" name="nomeFornecedor">
                                 <option value="">Selecione o fornecedor</option>
-                                <!-- FALTA TERMINAR -->
+                                {{#each fornecedores}}
+                                <option value="{{_id}}">{{nomeFornecedor}}</option>
+                                {{else}}
+                                <option value="0">Nenhuma categoria registrada</option>
+                                {{/each}}
                             </select>
                         </div>
                         <div class="form-group">
