@@ -11,11 +11,12 @@ router.get("/index", function(req, res) {
     res.render("usuarios/index")
 })
 
-// Rota de cadastro
+// ROTA GET DE CADASTRO DE USUARIOS
 router.get("/cadastro", function (req, res) {
     res.render("usuarios/cadastro");
 });
 
+// ROTA POST DE CADASTRO DE USUARIOS
 router.post("/cadastro/nova", function (req, res) {
     var erros = [];
 
@@ -73,12 +74,12 @@ router.post("/cadastro/nova", function (req, res) {
     }
 })
 
-// Rota de login
+// ROTA GET DE LOGIN 
 router.get("/login", function(req, res) {
     res.render("usuarios/login", { user: req.user });
 });
 
-
+// ROTA POST DE LOGIN
 router.post("/login", function(req, res, next) {
     passport.authenticate("local", {
         successRedirect: "/usuarios/index",
@@ -87,7 +88,7 @@ router.post("/login", function(req, res, next) {
     })(req, res, next)
 })
 
-// Rota para fazer logout
+// ROTA DE LOGOUT
 router.get("/logout", (req, res, next) => {
     req.logout(function(err) {
         if(err) {return next(err)}else{}
@@ -96,5 +97,5 @@ router.get("/logout", (req, res, next) => {
     })
 })
 
-
+// EXPORTAÇÃO DO ROUTER = USUARIO
 module.exports = router;

@@ -6,34 +6,35 @@ const router = require('express').Router()
 const mongoose = require("mongoose")
 // Chamada do Multer
 const multer = require('multer');
+
+// PASTAS
+
+// Chamada da Pasta Helpers
+const {eAdm} = require("../helpers/eAdm")
 // Chamada da Pasta Uploads
 const upload = multer({ dest: 'public/img/' })
 
+// MODELS
+
 // Require da Model de Categoria
 require("../models/Categoria")
-// Chamando o exports do model
 const Categoria = mongoose.model("categorias")
 // Require da Model de Medicamento
 require("../models/Medicamento")
-// Chamando o exports do model
 const Medicamento = mongoose.model("medicamentos")
 // Require da Model de Fabricante
 require("../models/Fabricante")
-// Chamando o exports do model
 const Fabricante = mongoose.model("fabricantes")
 // Require da Model de Fornecedor
 require("../models/Fornecedor")
-// CHAMADA DO BANCO POSTAGEM 2.0
 const Fornecedor = mongoose.model("fornecedores")
-const {eAdm} = require("../helpers/eAdm")
 
-// ROTAS
-
-// ROTA CHEFE - ADM 
+// Rota principal ADM 
 router.get('/', eAdm, function (req, res) {
     res.send("Rota Principal ")
 })
 
+// ROTAS
 // CATEGORIAS
 
 // ROTA "CATEGORIAS" = DASHTBOAD 
@@ -140,7 +141,7 @@ router.post("/categorias/deletar", eAdm, function (req, res) {
     })
 })
 
-
+// ROTAS
 // MEDICAMENTOS
 
 // ROTA GET DE MEDICAMENTOS
@@ -206,7 +207,7 @@ router.post("/medicamentos/nova", eAdm, function (req, res) {
     }
 })
 
-// ROTA DE EDIÇÃO DE MEDICAMENTOS
+// ROTA GET DE EDIÇÃO DE MEDICAMENTOS
 router.get("/medicamentos/edit/:id", eAdm, function (req, res) {
     Medicamento.findOne({ _id: req.params.id }).lean().then((medicamentos) => {
         Categoria.find().lean().then((categorias) => {
@@ -221,7 +222,7 @@ router.get("/medicamentos/edit/:id", eAdm, function (req, res) {
     })
 })
 
-// ROTA POST DE EDIÇÃO DE POSTS
+// ROTA POST DE EDIÇÃO DE MEDICAMENTOS
 router.post("/medicamentos/edit", eAdm, function (req, res) {
     Medicamento.findOne({ _id: req.body.id }).then((medicamentos) => {
         medicamentos.nomeGenerico = req.body.nomeGenerico,
@@ -256,6 +257,7 @@ router.post("/medicamentos/deletar", eAdm, function (req, res) {
     })
 })
 
+// ROTAS
 // FABRICANTE
 
 // ROTA GET DE FABRICANTE
@@ -304,6 +306,7 @@ router.post("/fabricante/nova", eAdm, (req, res) => {
     }
 });
 
+// ROTA GET DE EDIÇÃO DE FABRICANTES
 router.get("/fabricantes/edit/:id", eAdm, function (req, res) {
     Fabricante.findOne({ _id: req.params.id }).lean().then(function (fabricante) {
         res.render("adm/editfabricante", { fabricante: fabricante })
@@ -345,9 +348,7 @@ router.post("/fabricantes/deletar", eAdm, function (req, res) {
 })
 
 
-
-
-
+// ROTAS
 // FORNECEDOR
 
 // ROTA GET DE FORNECEDOR
@@ -438,7 +439,6 @@ router.post("/fornecedor/deletar", eAdm, function (req, res) {
 })
 
 
-
 // PERFIL
 
 // Rota de perfil
@@ -446,6 +446,5 @@ router.get("/perfil", eAdm, function (req, res) {
     res.render("adm/perfil")
 })
 
-
-
+// EXPRTAÇÃO DO ROUTER = ADM
 module.exports = router

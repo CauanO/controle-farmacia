@@ -4,30 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    {{!-- CSS-formAdm --}}
     <link rel="stylesheet" href="/css/formAdm.css">
-    {{!-- CSS-categorias --}}
     <link rel="stylesheet" href="/css/categorias.css">
-    {{!-- CSS-vercategorias --}}
     <link rel="stylesheet" href="/css/vercategorias.css">
-    {{!-- CSS-vermedicamentos --}}
     <link rel="stylesheet" href="/css/vermedicamentos.css">
-    {{!-- CSS-formMed --}}
     <link rel="stylesheet" href="/css/formMed.css">
-    {{!-- CSS-header --}}
     <link rel="stylesheet" href="/css/header.css">
-    {{!-- CSS-index --}}
     <link rel="stylesheet" href="/css/login.css">
-    {{!-- CSS-perfil --}}
     <link rel="stylesheet" href="/css/perfil.css">
-
     <link rel="stylesheet" href="/css/cadastro.css">
-
     <title>Controle de Estoque</title>
 </head>
 
@@ -40,7 +29,7 @@
     </div>
     {{else}}
     {{/each}}
-    
+
     {{#if error}}
     <div style="margin: 15px;" class="alert alert-danger">{{error}}
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -51,7 +40,7 @@
     {{/if}}
     {{>_msg}}
     {{{body}}}
-    <!-- Bootstrap -->
+    <!-- JavaScript -->
     <script src="/js/header.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
