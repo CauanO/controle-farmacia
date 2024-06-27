@@ -6,6 +6,11 @@ const Usuario = mongoose.model("usuarios");
 const bcrypt = require("bcryptjs");
 const passport = require("passport")
 
+// Rota index
+router.get("/index", function(req, res) {
+    res.render("usuarios/index")
+})
+
 // Rota de cadastro
 router.get("/cadastro", function (req, res) {
     res.render("usuarios/cadastro");
@@ -53,7 +58,7 @@ router.post("/cadastro/nova", function (req, res) {
 
                         novoUsuario.save().then(() => {
                             req.flash("success_msg", "Usuário cadastrado com sucesso!");
-                            res.redirect("/usuarios/cadastro");
+                            res.redirect("/usuarios/login");
                         }).catch((err) => {
                             req.flash("error_msg", "Houve um erro ao cadastrar o usuário!");
                             res.redirect("/usuarios/cadastro");
@@ -69,16 +74,27 @@ router.post("/cadastro/nova", function (req, res) {
 })
 
 // Rota de login
-router.get("/login",function (req, res) {
-    res.render("usuarios/login")
-})
+router.get("/login", function(req, res) {
+    res.render("usuarios/login", { user: req.user });
+});
+
 
 router.post("/login", function(req, res, next) {
     passport.authenticate("local", {
-        successRedirect: "/",
+        successRedirect: "/usuarios/index",
         failureRedirect: "/usuarios/login",
         failureFlash: true
     })(req, res, next)
 })
+
+// Rota para fazer logout
+router.get("/logout", (req, res, next) => {
+    req.logout(function(err) {
+        if(err) {return next(err)}else{}
+        req.flash("success_msg", "Usuario deslogado com sucesso!");
+        res.redirect("/usuarios/login")
+    })
+})
+
 
 module.exports = router;

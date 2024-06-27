@@ -14,10 +14,10 @@ const mongoose = require("mongoose")
 const passport = require("passport")
 require("./config/auth")(passport)
 
-// ROTA INDEX
-app.get("/", function(req, res) {
-    res.render('index')
-})
+// // ROTA INDEX
+// app.get("/", function(req, res) {
+//     res.render('index')
+// })
 
 // Config handlebars
 app.engine('handlebars', engine());

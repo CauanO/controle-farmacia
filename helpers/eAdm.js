@@ -6,8 +6,8 @@ module.exports = {
             if(req.user.eAdm === 1) {
                 return next();
             } else {
-                req.flash("error_msg", "Permissão negada");
-                return res.redirect("/");
+                req.flash("error_msg", "Permissão negada, voce não é um administrador");
+                return res.redirect("/usuarios/login");
             }
         } else {
             req.flash("error_msg", "Você precisa estar logado para acessar esta página");

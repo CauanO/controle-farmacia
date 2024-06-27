@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Farmácia Pague Mais</title>
-    
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <style>
-        body{
+        body {
             margin: 0;
             padding: 0;
         }
+
         /* Estilos personalizados podem ser adicionados aqui */
         .product-image {
-            height: 300px; /* Altura padrão para as imagens dos produtos */
+            height: 300px;
+            /* Altura padrão para as imagens dos produtos */
         }
     </style>
 </head>
+
 <body>
 
     <!-- Header -->
@@ -28,12 +32,20 @@
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link btn btn-outline-success my-2 my-sm-0" href="/usuarios/login">Login</a>
+                    <a class="btn btn-success mx-1 my-2 my-sm-0" href="/usuarios/login">Login Usuário</a>
                 </li>
+                <li class="nav-item">
+                    <a class="btn btn-success mx-1 my-2 my-sm-0" href="/adm/categorias">Login Administração</a>
+                </li>
+                {{#if user}}
+                <li class="nav-item">
+                    <a class="btn btn-danger mx-1 my-2 my-sm-0" href="/usuarios/logout">Sair</a>
+                </li>
+                {{else}}
+                {{/if}}
             </ul>
         </div>
     </nav>
@@ -98,11 +110,10 @@
                 <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                     <div class="card h-100">
                         <img class="card-img-top product-image"
-                            src="https://cdn1.staticpanvel.com.br/produtos/15/102215-15.jpg"
-                            alt="Ibuprofeno">
+                            src="https://cdn1.staticpanvel.com.br/produtos/15/102215-15.jpg" alt="Ibuprofeno">
                         <div class="card-body">
                             <h5 class="card-title">Ibuprofeno</h5>
-                             R$ 250,00
+                            R$ 250,00
                         </div>
                         <div class="card-footer">
                             <a href="#" class="btn btn-outline-dark btn-block">Comprar</a>
@@ -189,7 +200,7 @@
     </section>
     <!-- Fim - Medicamentos -->
 
-    
+
 
     <!-- Footer -->
     <footer class="py-4 bg-dark text-center text-white">
@@ -207,4 +218,5 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 </body>
+
 </html>
