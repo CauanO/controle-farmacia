@@ -2,9 +2,11 @@
 <main role="main" class="container-perfil">
         <div class="profile-info">
             <img src="https://i.pinimg.com/736x/ce/70/cb/ce70cbf4ab969b4afc988ba0650330d2.jpg" alt="Foto de Perfil" class="profile-img">
-            <h2>Olá Master</h2>
-            <p>E-mail: master@gmail.com</p>
+            {{#if user}}
+            {{/if}}
+            <h2>Olá {{nome}}</h2>
+            <p>E-mail: {{email}}</p>
         </div> 
 
-        <button class="btn btn-edit-profile btn-lg" onclick="location.href='/usuarios/logout';">Sair</button>
+        <button class="btn btn-edit-profile btn-lg" onclick="location.href='/usuarios/logout';">Editar</button>
     </main>

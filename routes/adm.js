@@ -28,6 +28,9 @@ const Fabricante = mongoose.model("fabricantes")
 // Require da Model de Fornecedor
 require("../models/Fornecedor")
 const Fornecedor = mongoose.model("fornecedores")
+// Require da Model de Usuario
+require("../models/Usuario");
+const Usuario = mongoose.model("usuarios");
 
 // Rota principal ADM 
 router.get('/', eAdm, function (req, res) {
@@ -66,7 +69,7 @@ router.post('/categorias/nova', upload.single('img'), eAdm, function (req, res) 
         erros.push({ texto: "Categoria Inválida!" })
     }
 
-    if (!req.body.descricao) {
+    if (!req.body.descricao) { 
         erros.push({ texto: "Descricão Inválida!" })
     }
 

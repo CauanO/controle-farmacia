@@ -12,6 +12,12 @@
     overflow:hidden;
     box-shadow: 2px 0 18px rgba(0, 0, 0, 0.26);
 }
+.logout::before {
+  content: "\f2f5"; /* Código unicode para o ícone de logout */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900; /* Necessário para exibir o ícone */
+  margin-right: 8px; /* Espaço entre o ícone e o texto */
+}
 .menu li a{
   display: inline-block;
   text-indent: -500em;

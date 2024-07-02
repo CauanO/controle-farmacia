@@ -1,5 +1,6 @@
 // Chamada do express
 const express = require('express')
+// Chamada do express
 const app = express()
 // Chamada do handlebars
 const { engine } = require('express-handlebars');
@@ -11,13 +12,13 @@ const session = require("express-session")
 const flash = require("connect-flash")
 // Chamada do Banco de Dados
 const mongoose = require("mongoose")
+// Chamada do passposrt
 const passport = require("passport")
-require("./config/auth")(passport)
 
-// // ROTA INDEX
-// app.get("/", function(req, res) {
-//     res.render('index')
-// })
+
+
+// Config passport
+require("./config/auth")(passport)
 
 // Config handlebars
 app.engine('handlebars', engine());
@@ -35,6 +36,7 @@ app.use(session({
     saveUninitialized: true
 }))
 
+// Config passport
 app.use(passport.initialize())
 app.use(passport.session())
 
