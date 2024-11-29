@@ -1,3 +1,9 @@
+## Status do Projeto
+
+[![Projeto Completo](https://img.shields.io/badge/Projeto-Completo-brightgreen)](#)
+
+---
+
 # Controle de Estoque de Farmácia
 
 ## Sobre o Projeto
@@ -86,13 +92,3 @@ As dependências do projeto estão listadas no arquivo `package.json`:
 - **`models/`**: Modelos de dados para o MongoDB.
 
 ---
-
-## Status do Projeto
-
-[![Projeto Completo](https://img.shields.io/badge/Projeto-Completo-brightgreen)](#) [![Projeto Incompleto](https://img.shields.io/badge/Projeto-Incompleto-red)](#)
-
----
-
-## Licença
-
-Este projeto está sob a licença **MIT**. Sinta-se à vontade para usá-lo, modificá-lo e distribuí-lo.
